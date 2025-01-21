@@ -1,0 +1,29 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=44.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qunex_pipeline"
+version = "0.0.1"
+description = "qunex_pipeline"
+readme = "README.md"
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["qunex_pipeline"]
+
+
+requires-python = ">=3.9"
+[project.optional-dependencies]
+dev = [
+    'ruff',
+    'pytest'
+    ]
+
+[project.scripts]
+nfact_decomp = "qunex_pipeline.__main__:main"
