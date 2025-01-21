@@ -5,9 +5,9 @@ requires = ["setuptools>=44.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "qunex_pipeline"
+name = "qpipeline"
 version = "0.0.1"
-description = "qunex_pipeline"
+description = "qpipeline"
 readme = "README.md"
 license = { file = "LICENSE" }
 classifiers = [
@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
 ]
-keywords = ["qunex_pipeline"]
+keywords = ["qpipeline"]
 
 
 requires-python = ">=3.9"
@@ -26,4 +26,4 @@ dev = [
     ]
 
 [project.scripts]
-nfact_decomp = "qunex_pipeline.__main__:main"
+qpipeline = "qpipeline.__main__:main"
