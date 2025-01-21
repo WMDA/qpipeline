@@ -1,0 +1,29 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=44.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qpipeline"
+version = "0.0.1"
+description = "qpipeline"
+readme = "README.md"
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["qpipeline"]
+
+
+requires-python = ">=3.9"
+[project.optional-dependencies]
+dev = [
+    'ruff',
+    'pytest'
+    ]
+
+[project.scripts]
+qpipeline = "qpipeline.__main__:main"

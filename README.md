@@ -1,2 +1,2 @@
-# qunex_pipeline
+# qpipeline
 Wrapper pipeline around Qunex HCP containers 
