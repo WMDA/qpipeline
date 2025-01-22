@@ -33,7 +33,18 @@ def error_and_exit(
 
 def run_cmd(command: list) -> dict:
     """
-    Function to run cmd command
+    Function to run cmd command.
+
+    Parameters
+    ----------
+    command: list
+        command to run
+
+    Returns
+    -------
+    output: dict
+        dict of output from subprocess
+        command
     """
     try:
         run = subprocess.run(command, capture_output=True)
