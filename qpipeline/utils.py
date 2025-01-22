@@ -1,4 +1,5 @@
 import subprocess
+import re
 
 
 def error_and_exit(
@@ -25,7 +26,6 @@ def error_and_exit(
     if not bool_statement:
         if error_message:
             error_message = re.sub(r"\[Errno 2\]", "", error_message)
-            col = colours()
             print("\033[1;31m" + error_message + "\033[0;0m")
         print("Exiting...\n")
         exit(1)
