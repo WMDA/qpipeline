@@ -1,3 +1,6 @@
+import subprocess
+
+
 def error_and_exit(
     bool_statement: bool,
     error_message: str = None,

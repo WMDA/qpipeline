@@ -1,9 +1,10 @@
+from .args import qpipeline_args
+from .setup import set_environment
 
 
 def main():
-    # arg = qpipeline_args()
-    # qunex_cmd = os.system("module load qunex-img")
-    print("module load qunex-img")
+    arg = qpipeline_args()
+    set_environment()
 
 
 if __name__ == "__main__":
