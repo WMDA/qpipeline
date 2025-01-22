@@ -1,2 +1,9 @@
+from .args import qpipeline_args
+
+
 def main():
-    print("testing")
+    arg = qpipeline_args()
+
+
+if __name__ == "__main__":
+    main()
