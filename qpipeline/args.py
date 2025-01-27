@@ -23,25 +23,37 @@ def qpipeline_args() -> dict:
         "-s",
         "--study_folder",
         help="Path to study folder",
+        dest="study_folder",
         required=True,
     )
     base_args.add_argument(
         "-r",
         "--raw_data",
         help="Path to raw data",
+        dest="raw_data",
         required=True,
     )
     base_args.add_argument(
         "-i",
         "--id",
         help="Subject ID",
+        dest="id",
         required=True,
     )
     base_args.add_argument(
         "-q",
         "--queue",
         help="Queue name to submit to",
+        dest="queue",
         required=True,
+    )
+    base_args.add_argument(
+        "-S",
+        "--skip_study_setup",
+        dest="skip_study_setup",
+        help="Skip study set up",
+        default=False,
+        action="store_true",
     )
 
     return vars(base_args.parse_args())
