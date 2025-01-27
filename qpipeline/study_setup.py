@@ -117,7 +117,7 @@ def set_up_qunex_study(args: dict) -> None:
     hcp_setup = set_up_hcp(
         args["study_folder"], qunex_con_image, args["id"], session_id, args["raw_data"]
     )
-    hcp_ouput = run_cmd(hcp_setup)
+    run_cmd(hcp_setup, no_return=True)
     os.remove(os.path.join(args["study_folder"], "hcp_batch.txt"))
     os.remove(os.path.join(args["study_folder"], "hcp_mapping_file.txt"))
     print(f"Finished setting up directory {args['id']}")
