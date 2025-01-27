@@ -5,6 +5,7 @@ from .utils import run_cmd, write_to_file
 from .qunex_commands import create_study, import_data, create_session_info, create_batch
 import re
 
+
 def map_files() -> dict:
     """
     Function to map files in qunex format.
@@ -66,7 +67,7 @@ def parse_output(output: str, study_path: str) -> None:
         label = match.group(2)
         mapped_files[number] = map_scans(file_mapping, label)
     result = [f"{num} => {label}\n" for num, label in mapped_files.items()]
-    write_to_file(study_path, '.hcp_mapping_file.txt', result, text_is_list=True)
+    write_to_file(study_path, ".hcp_mapping_file.txt", result, text_is_list=True)
 
 
 def set_up_qunex_study(args: dict) -> None:
@@ -90,15 +91,20 @@ def set_up_qunex_study(args: dict) -> None:
     )
     import_data_output = run_cmd(data_importing)
     parse_output(import_data_output["stdout"], args["study_folder"])
-    session_id = re.sub("sub-", "" , args["id"])
-    ses_info = create_session_info(args["study_folder"], qunex_con_image, args["id"], session_id)
+    session_id = re.sub("sub-", "", args["id"])
+    ses_info = create_session_info(
+        args["study_folder"], qunex_con_image, args["id"], session_id
+    )
     ses_info_output = run_cmd(ses_info)
-    shutil.copy(os.path.join(Path(__file__).parent, "files", "hcp_batch.txt"), args['study_folder'])
+    shutil.copy(
+        os.path.join(Path(__file__).parent, "files", "hcp_batch.txt"),
+        args["study_folder"],
+    )
     batch = create_batch(
-        args["study_folder"], 
-        qunex_con_image, 
-        args["id"], 
+        args["study_folder"],
+        qunex_con_image,
+        args["id"],
         session_id,
-        os.path.join(args["study_folder"], "hcp_batch.txt")
-        )
+        os.path.join(args["study_folder"], "hcp_batch.txt"),
+    )
     batch_ouput = run_cmd(batch)

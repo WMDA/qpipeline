@@ -1,4 +1,4 @@
-import os
+
 
 def create_study(study_folder: str, qunex_con_image: str, sub_id: str) -> list:
     """
@@ -26,6 +26,7 @@ def create_study(study_folder: str, qunex_con_image: str, sub_id: str) -> list:
         --container={qunex_con_image}
         """
     ]
+
 
 def import_data(
     study_folder: str, qunex_con_image: str, sub_id: str, raw_data: str
@@ -60,8 +61,12 @@ def import_data(
     """
     ]
 
+
 def create_session_info(
-    study_folder: str, qunex_con_image: str, sub_id: str, session_id: str, 
+    study_folder: str,
+    qunex_con_image: str,
+    sub_id: str,
+    session_id: str,
 ) -> list:
     """
     Function for the qunex import bids command
@@ -93,8 +98,13 @@ def create_session_info(
     """
     ]
 
+
 def create_batch(
-    study_folder: str, qunex_con_image: str, sub_id: str, session_id: str, path_to_batch: str
+    study_folder: str,
+    qunex_con_image: str,
+    sub_id: str,
+    session_id: str,
+    path_to_batch: str,
 ) -> list:
     """
     Function for the qunex import bids command
