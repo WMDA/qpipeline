@@ -91,7 +91,7 @@ def set_up_qunex_study(args: dict) -> None:
     """
     qunex_con_image = os.environ["QUNEXCONIMAGE"].rstrip()
     study_create = create_study(args["study_folder"], qunex_con_image, args["id"])
-    create_study_output = run_cmd(study_create)
+    run_cmd(study_create, no_return=True)
     data_importing = import_data(
         args["study_folder"], qunex_con_image, args["id"], args["raw_data"]
     )
@@ -101,7 +101,7 @@ def set_up_qunex_study(args: dict) -> None:
     ses_info = create_session_info(
         args["study_folder"], qunex_con_image, args["id"], session_id
     )
-    ses_info_output = run_cmd(ses_info)
+    run_cmd(ses_info, no_return=True)
     shutil.copy(
         os.path.join(Path(__file__).parent, "files", "hcp_batch.txt"),
         args["study_folder"],
@@ -113,7 +113,7 @@ def set_up_qunex_study(args: dict) -> None:
         session_id,
         os.path.join(args["study_folder"], "hcp_batch.txt"),
     )
-    batch_ouput = run_cmd(batch)
+    run_cmd(batch, no_return=True)
     hcp_setup = set_up_hcp(
         args["study_folder"], qunex_con_image, args["id"], session_id, args["raw_data"]
     )

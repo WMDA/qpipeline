@@ -32,7 +32,7 @@ def error_and_exit(
         exit(1)
 
 
-def run_cmd(command: list) -> dict:
+def run_cmd(command: list, no_return: bool = False) -> dict:
     """
     Function to run cmd command.
 
@@ -59,7 +59,10 @@ def run_cmd(command: list) -> dict:
         key: value.decode("utf-8").strip() if isinstance(value, bytes) else value
         for key, value in vars(run).items()
     }
-
+    if output["returncode"] != 0:
+        error_and_exit(False, f"Error in calling commnd due to: {output['stderr']}")
+    if no_return:
+        return None
     return output
 
 
