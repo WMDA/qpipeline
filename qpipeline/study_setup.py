@@ -150,5 +150,5 @@ def set_up_qunex_study(args: dict) -> None:
     data_importing = import_data(
         args["study_folder"], qunex_con_image, args["id"], args["raw_data"]
     )
-    import_data_output = output = run_cmd(data_importing)
+    import_data_output = run_cmd(data_importing)
     parse_output(import_data_output["stdout"])
