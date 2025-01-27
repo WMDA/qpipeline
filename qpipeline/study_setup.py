@@ -2,7 +2,13 @@ import os
 import shutil
 from pathlib import Path
 from .utils import run_cmd, write_to_file
-from .qunex_commands import create_study, import_data, create_session_info, create_batch
+from .qunex_commands import (
+    create_study,
+    import_data,
+    create_session_info,
+    create_batch,
+    set_up_hcp,
+)
 import re
 
 
@@ -67,7 +73,7 @@ def parse_output(output: str, study_path: str) -> None:
         label = match.group(2)
         mapped_files[number] = map_scans(file_mapping, label)
     result = [f"{num} => {label}\n" for num, label in mapped_files.items()]
-    write_to_file(study_path, ".hcp_mapping_file.txt", result, text_is_list=True)
+    write_to_file(study_path, "hcp_mapping_file.txt", result, text_is_list=True)
 
 
 def set_up_qunex_study(args: dict) -> None:
@@ -108,3 +114,10 @@ def set_up_qunex_study(args: dict) -> None:
         os.path.join(args["study_folder"], "hcp_batch.txt"),
     )
     batch_ouput = run_cmd(batch)
+    hcp_setup = set_up_hcp(
+        args["study_folder"], qunex_con_image, args["id"], session_id, args["raw_data"]
+    )
+    hcp_ouput = run_cmd(hcp_setup)
+    os.remove(os.path.join(args["study_folder"], "hcp_batch.txt"))
+    os.remove(os.path.join(args["study_folder"], "hcp_mapping_file.txt"))
+    print(f"Finished setting up directory {args['id']}")
